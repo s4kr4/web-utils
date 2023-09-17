@@ -1,5 +1,3 @@
-'use client';
-
 import { PageTitle } from '@/components/elements/PageTitle';
 import { LivesTable } from '@/components/parts/LivesTable';
 
