@@ -9,7 +9,7 @@ import {
   Button,
 } from '@nextui-org/react';
 import axios, { AxiosResponse } from 'axios';
-import { useEffect, useState } from 'react';
+import React, { ComponentProps, useEffect, useState } from 'react';
 
 type Live = {
   id: string;
@@ -21,7 +21,11 @@ type Live = {
   isoDate: string;
 };
 
-export default function LivesTable() {
+type Props = {
+  className?: string;
+} & ComponentProps<'table'>;
+
+export const LivesTable: React.FC<Props> = ({ className }) => {
   const [lives, setLives] = useState<Live[]>([]);
   useEffect(() => {
     const getLives = async () => {
@@ -42,7 +46,7 @@ export default function LivesTable() {
   }
 
   return (
-    <Table selectionMode="single">
+    <Table selectionMode="single" className={className}>
       <TableHeader>
         <TableColumn>TITLE</TableColumn>
         <TableColumn>LINK (VIDEO ID)</TableColumn>
@@ -69,4 +73,4 @@ export default function LivesTable() {
       </TableBody>
     </Table>
   );
-}
+};

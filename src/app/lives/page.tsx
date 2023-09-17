@@ -1,12 +1,13 @@
 'use client';
 
-import LivesTable from '@/components/parts/LivesTable';
+import { PageTitle } from '@/components/elements/PageTitle';
+import { LivesTable } from '@/components/parts/LivesTable';
 
 export default function Lives() {
   return (
-    <>
-      <h1>Lives</h1>
-      <LivesTable />
-    </>
+    <section className="p-4 pb-0">
+      <PageTitle title="Lives" />
+      <LivesTable className="mt-4" />
+    </section>
   );
 }
