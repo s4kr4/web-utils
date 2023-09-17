@@ -42,6 +42,12 @@ export const LivesTable: React.FC<Props> = ({ className }) => {
     getLives();
   }, []);
 
+  const onClickNotify = async (videoId: string) => {
+    await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/lives/notify`, {
+      videoId,
+    });
+  };
+
   if (lives.length === 0) {
     return <div>Loading...</div>;
   }
@@ -67,7 +73,11 @@ export const LivesTable: React.FC<Props> = ({ className }) => {
               {dayjs(live.pubDate).format('YYYY/MM/DD HH:mm:ss')}
             </TableCell>
             <TableCell>
-              <Button color="primary" size="sm">
+              <Button
+                color="primary"
+                size="sm"
+                onClick={() => onClickNotify(live.videoId)}
+              >
                 NOTIFY
               </Button>
             </TableCell>
