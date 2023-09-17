@@ -9,6 +9,7 @@ import {
   Button,
 } from '@nextui-org/react';
 import axios, { AxiosResponse } from 'axios';
+import dayjs from 'dayjs';
 import React, { ComponentProps, useEffect, useState } from 'react';
 
 type Live = {
@@ -62,7 +63,9 @@ export const LivesTable: React.FC<Props> = ({ className }) => {
                 {live.videoId}
               </Link>
             </TableCell>
-            <TableCell>{live.pubDate}</TableCell>
+            <TableCell>
+              {dayjs(live.pubDate).format('YYYY/MM/DD HH:mm:ss')}
+            </TableCell>
             <TableCell>
               <Button color="primary" size="sm">
                 NOTIFY
