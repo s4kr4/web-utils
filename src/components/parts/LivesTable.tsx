@@ -39,7 +39,7 @@ export const LivesTable: React.FC<Props> = ({ className }) => {
       const rawLives = await axios.get<AxiosResponse<Live[]>>(
         `${process.env.NEXT_PUBLIC_API_URL}/api/lives/data`,
       );
-      setLives(rawLives.data.data);
+      setLives(rawLives.data.data.slice(0, 10));
       setLastUpdated(new Date());
     } catch (error) {
       console.warn(error);
