@@ -2,6 +2,7 @@ import { SideMenu } from '@/components/parts/SideMenu';
 import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import { Providers } from './providers';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -18,12 +19,14 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <body className={inter.className}>
-        <div className="container flex">
-          <aside>
-            <SideMenu></SideMenu>
-          </aside>
-          <main className="flex-grow">{children}</main>
-        </div>
+        <Providers>
+          <div className="container flex dark text-foreground bg-background">
+            <aside>
+              <SideMenu></SideMenu>
+            </aside>
+            <main className="flex-grow">{children}</main>
+          </div>
+        </Providers>
       </body>
     </html>
   );
