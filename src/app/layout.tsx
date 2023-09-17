@@ -1,3 +1,4 @@
+import { SideMenu } from '@/components/parts/SideMenu';
 import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
@@ -15,8 +16,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="ja">
+      <body className={inter.className}>
+        <div className="container flex">
+          <aside>
+            <SideMenu></SideMenu>
+          </aside>
+          <main className="flex-grow">{children}</main>
+        </div>
+      </body>
     </html>
   );
 }
